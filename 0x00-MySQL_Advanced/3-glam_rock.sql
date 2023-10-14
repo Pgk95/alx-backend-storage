@@ -3,7 +3,7 @@
 
 SELECT
     band_name,
-    IFNULL(2022 - CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(lifespan, ' - ', 1), '-', -1) AS SIGNED), 0) AS lifespan
+    IFNULL(2022 - CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(lifespan, ' - ', 1), '-', -1) AS SIGNED), 0) AS longevity
 FROM
     metal_bands
 Where
