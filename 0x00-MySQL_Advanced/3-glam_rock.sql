@@ -3,10 +3,10 @@
 
 SELECT
     band_name,
-    IFNULL(2022 - CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(longevity, ' - ', 1), '-', -1) AS SIGNED), 0) AS longevity
+    (IFNULL(split, 2022) - formed) AS lifespan
 FROM
     metal_bands
 Where
-    FIND_IN_SET('Glam rock', main_genre) > 0
+    style LIKE '%Glam rock%'
 ORDER BY
     lifespan DESC;
