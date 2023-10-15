@@ -4,9 +4,9 @@
 DELIMITER $$
 CREATE PROCEDURE AddBonus
 (
-    IN student_id INT,
-    IN course_id INT,
-    IN bonus INT
+    IN user_id INT,
+    IN project_name INT,
+    IN score INT
 )
 BEGIN
     INSERT INTO projects(name)
