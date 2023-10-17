@@ -1,2 +1,2 @@
 // This script displays umber of documents
-db.school.countDocuments()
+db.school.count()
