@@ -23,10 +23,10 @@ class Cache:
                                          Union[str, int, None]]
             = None) -> Union[str, int, None]:
         """Get data from cache"""
-        data = self.redis.get(key)
-        if data is not None and fn is not None:
-            return fn(data)
-        return data.decode('utf-8') if data is not None else None
+        if fn:
+            return fn(self._redis.get(key))
+        data = self._redis.get(key)
+        return data
 
     def get_str(self, key: str) -> Union[str, None]:
         """Get string data from cache"""
