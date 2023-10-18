@@ -1,9 +1,24 @@
 #!/usr/bin/env python3
 """Redis caching module"""
 
+import sys
 import redis
 import uuid
-from typing import Union, Callable
+from typing import Union, Callable, Optional
+from functools import wraps
+
+
+def count_calls(method: Callable) -> Callable:
+    """Count calls decorator"""
+    key = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """Wrapper function"""
+        self._redis.INCR(key)
+        return method(self, *args, **kwargs)
+
+    return wrapper
 
 
 class Cache:
