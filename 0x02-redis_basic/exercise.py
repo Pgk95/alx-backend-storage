@@ -14,6 +14,6 @@ class Cache:
 
     def store(self, data) -> [str, bytes, int, float]:
         """Store data in cache"""
-        key = str(uuid.uuid4())
+        key = str(uuid.UUID())
         self._redis.set(key, data)
         return key
